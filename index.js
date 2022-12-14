@@ -11,6 +11,9 @@ const app = express();
 // public folder
 app.use(express.static("public"));
 
+// reading and body parsing
+app.use(express.json());
+
 // routes
 app.use("/api/auth", require("./routes/auth"));
 
