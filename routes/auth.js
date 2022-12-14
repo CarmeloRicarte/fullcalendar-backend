@@ -1,3 +1,8 @@
+/**
+ * Auth routes
+ * host + /api/auth
+ */
+
 const express = require("express");
 const { check } = require("express-validator");
 const {

@@ -1,12 +1,11 @@
-/**
- * Auth routes
- * host + /api/auth
- */
-
 const express = require("express");
 require("dotenv").config();
+const { dbConnection } = require("./database/config");
 
 const app = express();
+
+// database setup
+dbConnection();
 
 // public folder
 app.use(express.static("public"));
