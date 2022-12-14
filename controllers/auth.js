@@ -1,19 +1,30 @@
 const { response } = require("express");
+const bcrypt = require("bcryptjs");
 const Usuario = require("../models/Usuario.model.js");
 
 const createUser = async (req, res = response) => {
-  const { name, email, password } = req.body;
+  const { email, password } = req.body;
 
   try {
-    const usuario = new Usuario(req.body);
+    let usuario = await Usuario.findOne({ email });
+
+    if (usuario) {
+      return res.status(400).json({
+        ok: false,
+        msg: "Ya existe un usuario con ese email",
+      });
+    }
+    usuario = new Usuario(req.body);
+
+    const salt = bcrypt.genSaltSync();
+    usuario.password = bcrypt.hashSync(password, salt);
+
     await usuario.save();
 
     res.status(201).json({
       ok: true,
-      msg: "User created successfully!",
-      name,
-      email,
-      password,
+      uid: usuario.id,
+      name: usuario.name,
     });
   } catch (error) {
     console.log(error);
@@ -29,7 +40,7 @@ const loginUser = (req, res = response) => {
 
   res.json({
     ok: true,
-    msg: "Login successfully!",
+    msg: "Se ha iniciado sesión correctamente",
     email,
     password,
   });
@@ -38,7 +49,7 @@ const loginUser = (req, res = response) => {
 const revalidateToken = (req, res = response) => {
   res.json({
     ok: true,
-    msg: "Token revalidated successfully!",
+    msg: "Token revalidado correctamente",
   });
 };
 
