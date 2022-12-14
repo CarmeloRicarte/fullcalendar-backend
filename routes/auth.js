@@ -5,6 +5,7 @@ const {
   loginUser,
   revalidateToken,
 } = require("../controllers/auth");
+const { fieldsValidator } = require("../middlewares/fieldsValidator");
 const router = express.Router();
 
 router.post(
@@ -15,6 +16,7 @@ router.post(
     check("password", "La contraseña debe ser de 8 caracteres").isLength({
       min: 8,
     }),
+    fieldsValidator,
   ],
   createUser
 );
@@ -26,6 +28,7 @@ router.post(
     check("password", "La contraseña debe ser de 8 caracteres").isLength({
       min: 8,
     }),
+    fieldsValidator,
   ],
   loginUser
 );
