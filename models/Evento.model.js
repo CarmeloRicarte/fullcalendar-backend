@@ -20,6 +20,7 @@ const EventoSchema = Schema({
     // reference to Usuario model, will have the properties of Usuario
     type: Schema.Types.ObjectId,
     ref: "Usuario",
+    required: true,
   },
 });
 
