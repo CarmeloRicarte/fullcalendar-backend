@@ -7,6 +7,7 @@ specifiers:
   express: ^4.18.2
   express-validator: ^6.14.2
   jsonwebtoken: ^8.5.1
+  luxon: ^3.1.1
   mongoose: ^6.8.0
 
 dependencies:
@@ -17,6 +18,9 @@ dependencies:
   express-validator: 6.14.2
   jsonwebtoken: 8.5.1
   mongoose: 6.8.0
+
+devDependencies:
+  luxon: 3.1.1
 
 packages:
 
@@ -1222,6 +1226,11 @@ packages:
   /lodash/4.17.21:
     resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
     dev: false
+
+  /luxon/3.1.1:
+    resolution: {integrity: sha512-Ah6DloGmvseB/pX1cAmjbFvyU/pKuwQMQqz7d0yvuDlVYLTs2WeDHQMpC8tGjm1da+BriHROW/OEIT/KfYg6xw==}
+    engines: {node: '>=12'}
+    dev: true
 
   /media-typer/0.3.0:
     resolution: {integrity: sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==}
