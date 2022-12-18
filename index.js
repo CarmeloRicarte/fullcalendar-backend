@@ -1,8 +1,12 @@
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
+const compression = require("compression");
 const app = express();
 const { dbConnection } = require("./database/config");
+
+// Compress all HTTP responses
+app.use(compression());
 
 // database setup
 dbConnection();
